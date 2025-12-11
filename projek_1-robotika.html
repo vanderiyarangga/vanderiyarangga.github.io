@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Portfolio Full-Stack Developer - Nama Anda">
+  <title>Nama Anda | Full-Stack Developer</title>
+
+  <!-- Bootstrap 5.3 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Google Fonts: Inter (mirip situs referensi) -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+
+  <style>
+    :root {
+      --bg-dark: #0f0f1a;
+      --text-light: #ffffff;
+      --text-muted: #a0a0c0;
+      --accent: #007bff;
+      --gray-light: #f8f9fa;
+    }
+    body { font-family: 'Inter', sans-serif; background: #fff; color: #333; scroll-behavior: smooth; overflow-x: hidden; }
+    h1,h2,h3,h4,h5,h6 { font-weight: 800; }
+
+    /* Navbar */
+    .navbar {
+      transition: all 0.4s ease;
+      background: transparent;
+      padding: 1.5rem 0;
+    }
+    .navbar.scrolled {
+      background: rgba(15,15,26,0.95);
+      backdrop-filter: blur(12px);
+      padding: 1rem 0;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    }
+    .navbar .nav-link {
+      color: white !important;
+      font-weight: 500;
+      margin: 0 15px;
+      position: relative;
+    }
+    .navbar .nav-link::after {
+      content: ''; position: absolute; width: 0; height: 2px; bottom: -6px; left: 50%;
+      background: var(--accent); transition: all 0.3s;
+    }
+    .navbar .nav-link:hover::after { width: 100%; left: 0; }
+
+    /* Hero */
+    #home {
+      height: 100vh; min-height: 600px;
+      background: linear-gradient(135deg, #0f0f1a 0%, #1a1a2e 100%);
+      position: relative; display: flex; align-items: center; justify-content: center;
+      text-align: center; color: white; overflow: hidden;
+    }
+    #home::before {
+      content: ''; position: absolute; inset: 0;
+      background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"><rect width="100" height="100" fill="%230f0f1a"/><rect x="0" y="0" width="50" height="50" fill="%23151525"/><rect x="50" y="50" width="50" height="50" fill="%23151525"/></svg>') repeat;
+      opacity: 0.4; animation: noise 10s steps(10) infinite;
+    }
+    @keyframes noise { 0% { transform: translate(0,0); } 100% { transform: translate(10px,10px); } }
+    .hero-text h1 { font-size: 5rem; font-weight: 900; text-shadow: 0 10px 30px rgba(0,0,0,0.6); }
+    .hero-text p { font-size: 1.6rem; font-weight: 300; opacity: 0.9; }
+    .social-icons a { color: white; font-size: 1.8rem; margin: 0 20px; transition: all 0.3s; }
+    .social-icons a:hover { color: var(--accent); transform: translateY(-5px); }
+
+    section { padding: 100px 0; }
+    .section-title {
+      font-size: 3rem; text-align: center; margin-bottom: 60px; position: relative;
+    }
+    .section-title::after {
+      content: ''; width: 80px; height: 4px; background: var(--accent);
+      position: absolute; bottom: -15px; left: 50%; transform: translateX(-50%);
+    }
+
+    /* About */
+    #about { background: var(--gray-light); }
+    .about-img { border-radius: 50%; width: 300px; height: 300px; object-fit: cover; box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
+
+    /* Work Cards */
+    .work-card {
+      background: white; border-radius: 12px; overflow: hidden;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.08); transition: all 0.4s ease; cursor: pointer;
+    }
+    .work-card:hover {
+      transform: translateY(-15px) scale(1.02);
+      box-shadow: 0 25px 50px rgba(0,123,255,0.2); border: 1px solid var(--accent);
+    }
+    .work-card img { filter: grayscale(30%); transition: all 0.4s; }
+    .work-card:hover img { filter: grayscale(0%); transform: scale(1.05); }
+
+    /* GALLERY — SEMUA FOTO UKURAN SAMA (KOTAK PERSEGI) */
+    .gallery-img {
+      aspect-ratio: 1 / 1;           /* Kotak persegi sempurna */
+      overflow: hidden;
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      transition: all 0.4s ease;
+      filter: grayscale(80%);
+      background: #111;
+    }
+    .gallery-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;            /* Crop rapi ke tengah */
+      object-position: center;
+      transition: all 0.4s ease;
+    }
+    .gallery-img:hover {
+      filter: grayscale(0%);
+      transform: scale(1.05);
+    }
+    .gallery-img:hover img {
+      transform: scale(1.1);
+    }
+
+    /* Footer */
+    #contact {
+      background: var(--bg-dark); color: white; text-align: center; padding: 100px 0;
+    }
+    #contact .profile-small {
+      width: 100px; height: 100px; border-radius: 50%; border: 4px solid var(--accent); object-fit: cover;
+    }
+
+    /* Fade-in Animation */
+    .fade-in { opacity: 0; transform: translateY(30px); transition: all 0.8s ease-out; }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg fixed-top">
+    <div class="container">
+      <a class="navbar-brand text-white fw-bold" href="#">Nama Anda</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="#home">Beranda</a></li>
+          <li class="nav-item"><a class="nav-link" href="#about">Tentang Saya</a></li>
+          <li class="nav-item"><a class="nav-link" href="#work">Hasil Kerja</a></li>
+          <li class="nav-item"><a class="nav-link" href="#gallery">Galeri</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact">Kontak</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero, About, Work (disesuaikan sebelumnya) -->
+  <!-- ... (bagian sebelumnya tetap sama, saya singkat di sini agar fokus ke Gallery) ... -->
+
+  <!-- GALLERY — SUDAH 100% RAPI & SAMA BESAR -->
+  <section id="gallery">
+    <div class="container">
+      <h2 class="section-title text-dark">Gallery</h2>
+      <p class="fw-bold">Project 1</p>
+      <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 g-4">
+        
+        <div class="col fade-in"><div class="gallery-img">
+          <img src="images/gallery/gl-pro-1/pro1.jpg" alt="Project 1" loading="lazy"
+               data-bs-toggle="modal" data-bs-target="#imgModal" onclick="showImg(this.src)">
+        </div></div>
+        
+        <div class="col fade-in"><div class="gallery-img">
+          <img src="images/gallery/gl-pro-1/pro2.jpg" alt="Project 1b" loading="lazy"
+               data-bs-toggle="modal" data-bs-target="#imgModal" onclick="showImg(this.src)">
+        </div></div>
+        
+        <div class="col fade-in"><div class="gallery-img">
+          <img src="images/gallery/gl-pro-1/pro3.jpg" alt="Pelatihan Robotic 1" loading="lazy"
+               data-bs-toggle="modal" data-bs-target="#imgModal" onclick="showImg(this.src)">
+        </div></div>
+        
+        <div class="col fade-in"><div class="gallery-img">
+          <img src="images/gallery/gl-pro-1/pro4.jpeg" alt="Pelatihan Robotic 2" loading="lazy"
+               data-bs-toggle="modal" data-bs-target="#imgModal" onclick="showImg(this.src)">
+        </div></div>
+        
+        <div class="col fade-in"><div class="gallery-img">
+          <img src="images/gallery/gl-pro-1/pro5.jpg" alt="Demo Project" loading="lazy"
+               data-bs-toggle="modal" data-bs-target="#imgModal" onclick="showImg(this.src)">
+        </div></div>
+        
+        <div class="col fade-in"><div class="gallery-img">
+          <img src="images/gallery/gl-pro-1/pro6.jpg" alt="Seminar Project" loading="lazy"
+               data-bs-toggle="modal" data-bs-target="#imgModal" onclick="showImg(this.src)">
+        </div></div>
+        
+        <div class="col fade-in"><div class="gallery-img">
+          <img src="images/gallery/gl-pro-1/pro7.jpg" alt="Pemrograman Web Dasar" loading="lazy"
+               data-bs-toggle="modal" data-bs-target="#imgModal" onclick="showImg(this.src)">
+        </div></div>
+        
+        <div class="col fade-in"><div class="gallery-img">
+          <img src="images/gallery/gl-pro-1/pro8.jpg" alt="Pemrograman Dasar" loading="lazy"
+               data-bs-toggle="modal" data-bs-target="#imgModal" onclick="showImg(this.src)">
+        </div></div>
+
+      </div>
+
+      <p class="text-center mt-5 text-muted lead">
+        Koleksi momen dari proyek, workshop, dan kegiatan pengembangan yang pernah saya ikuti. 
+        Setiap karya merupakan bukti dedikasi saya terhadap kualitas dan inovasi.
+      </p>
+    </div>
+  </section>
+
+  <!-- Footer tetap sama -->
+  <!-- <footer id="contact">
+    <div class="container">
+      <img src="https://placehold.co/100x100?text=Profil" alt="Profil" class="profile-small mb-3">
+      <h4>Nama Lengkap Anda</h4>
+      <p class="text-muted">Jakarta, Indonesia • email@contoh.com</p>
+      <div class="social-icons my-4">
+        <a href="#" class="mx-3"><i class="fab fa-github fa-2x"></i></a>
+        <a href="#" class="mx-3"><i class="fab fa-instagram fa-2x"></i></a>
+        <a href="#" class="mx-3"><i class="fab fa-youtube fa-2x"></i></a>
+      </div>
+      <p class="mt-4">&copy; 2025 Nama Anda. All rights reserved.</p>
+    </div>
+  </footer> -->
+
+  <!-- Lightbox Modal -->
+  <div class="modal fade" id="imgModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered modal-xl">
+      <div class="modal-content bg-transparent border-0">
+        <img id="modalImg" src="" class="img-fluid rounded shadow" alt="Gallery Image">
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap JS + Animasi -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // Navbar scroll
+    window.addEventListener('scroll', () => {
+      document.querySelector('.navbar').classList.toggle('scrolled', window.scrollY > 100);
+    });
+
+    // Fade-in on scroll
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+    // Lightbox
+    function showImg(src) {
+      document.getElementById('modalImg').src = src;
+    }
+  </script>
+</body>
+</html>
