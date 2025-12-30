@@ -30,7 +30,7 @@
         --bg-dark: #0f0f1a;
         --text-light: #ffffff;
         --text-muted: #a0a0c0;
-        --accent: #007bff;
+
         --gray-light: #f8f9fa;
       }
       body {
@@ -66,43 +66,61 @@
         margin: 0 15px;
         position: relative;
       }
-      .navbar .nav-link::after {
-        content: "";
-        position: absolute;
-        width: 0;
-        height: 2px;
-        bottom: -6px;
-        left: 50%;
-        background: var(--accent);
-        transition: all 0.3s;
-      }
-      .navbar .nav-link:hover::after {
-        width: 100%;
-        left: 0;
-      }
+     /* Efek underline pendek dari tengah saat hover */
+.nav-link.underline-hover {
+  position: relative;
+  text-decoration: none; /* Hilangkan underline default jika ada */
+  padding-bottom: 4px; /* Jarak antara teks dan garis */
+}
+
+.nav-link.underline-hover::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  right: 50%;
+  height: 2px; /* Ketebalan garis */
+  background-color: #007bff;
+  transition: left 0.3s ease, right 0.3s ease; /* Animasi smooth */
+}
+
+.nav-link.underline-hover:hover::after,
+.nav-link.underline-hover:focus::after {
+  left: 20%;  /* Panjang garis ~60% dari lebar teks */
+  right: 20%;
+}
 
       /* Hero */
-      #home {
-        height: 100vh;
-        min-height: 600px;
-        background: linear-gradient(135deg, #0f0f1a 0%, #1a1a2e 100%);
-        position: relative;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
-        color: white;
-        overflow: hidden;
-      }
-      #home::before {
-        content: "";
-        position: absolute;
-        inset: 0;
-        background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="%230f0f1a"/><rect x="0" y="0" width="50" height="50" fill="%23151525"/><rect x="50" y="50" width="50" height="50" fill="%23151525"/></svg>')
-          repeat;
-        opacity: 0.4;
-        animation: noise 10s steps(10) infinite;
-      }
+       #home {
+  min-height: 100vh;
+  background: var(--bg-dark);
+  color: white;
+  position: relative;
+  overflow: hidden;
+}
+     /* Tambahkan lapisan gelap agar teks tetap terbaca */
+/* #home::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0, 0, 0, 0.3);
+   z-index: 1;
+} */
+
+/* Pastikan semua teks & elemen di atas lapisan gelap */
+#home > .container,
+#home h1,
+#home p,
+#home .social-icons {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+}
+
+#home h1 {
+  padding-top: 3rem;
+}
+
       @keyframes noise {
         0% {
           transform: translate(0, 0);
@@ -134,7 +152,7 @@
         opacity: 0;
       }
       .social-icons a:hover {
-        color: var(--accent);
+        color: #007bff;
         transform: translateY(-5px);
       }
 
@@ -176,90 +194,91 @@
         color: #555;
       }
 
-     /* PROJECTS — Gambar project ukuran sama persis (rasio 4:3, bisa diganti) */
-.work-card {
-    background: white;
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.08);
-    transition: all 0.4s ease;
-    cursor: pointer;
-    display: flex;
-    flex-direction: column;
-}
+      /* PROJECTS — Gambar project ukuran sama persis (rasio 4:3, bisa diganti) */
+      .work-card {
+        background: white;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+        transition: all 0.4s ease;
+        cursor: pointer;
+        display: flex;
+        flex-direction: column;
+      }
 
-.work-card .img-wrapper {
-    aspect-ratio: 4 / 3;          /* Semua gambar project jadi 4:3 (bisa diganti 16/9 atau 1/1) */
-    overflow: hidden;
-    background: #111;
-    position: relative;
-}
+      .work-card .img-wrapper {
+        aspect-ratio: 4 / 3; /* Semua gambar project jadi 4:3 (bisa diganti 16/9 atau 1/1) */
+        overflow: hidden;
+        background: #111;
+        position: relative;
+      }
 
-.work-card .img-wrapper img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;           /* Crop rapi ke tengah */
-    object-position: center;
-    transition: all 0.4s ease;
-    filter: grayscale(30%);
-}
+      .work-card .img-wrapper img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover; /* Crop rapi ke tengah */
+        object-position: center;
+        transition: all 0.4s ease;
+        filter: grayscale(30%);
+      }
 
-.work-card:hover .img-wrapper img {
-    filter: grayscale(0%);
-    transform: scale(1.08);
-}
+      .work-card:hover .img-wrapper img {
+        filter: grayscale(0%);
+        transform: scale(1.08);
+      }
 
-.work-card:hover {
-    transform: translateY(-15px) scale(1.02);
-    box-shadow: 0 25px 50px rgba(0,123,255,0.25);
-    border: 1px solid var(--accent);
-}
+      .work-card:hover {
+        transform: translateY(-15px) scale(1.02);
+        box-shadow: 0 25px 50px rgba(0, 123, 255, 0.25);
+        border: 1px solid var(--accent);
+      }
 
-.work-card .card-body {
-    flex-grow: 1;
-    padding: 1.5rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
+      .work-card .card-body {
+        flex-grow: 1;
+        padding: 1.5rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
 
-       /* GALLERY — SEMUA FOTO UKURAN SAMA (KOTAK PERSEGI) */
-    .gallery-img {
-      aspect-ratio: 1 / 1;           /* Kotak persegi sempurna */
-      overflow: hidden;
-      border-radius: 12px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-      transition: all 0.4s ease;
-      filter: grayscale(80%);
-      background: #111;
-    }
-    .gallery-img img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;            /* Crop rapi ke tengah */
-      object-position: center;
-      transition: all 0.4s ease;
-    }
-    .gallery-img:hover {
-      filter: grayscale(0%);
-      transform: scale(1.05);
-    }
-    .gallery-img:hover img {
-      transform: scale(1.1);
-    }
-
+      /* GALLERY — SEMUA FOTO UKURAN SAMA (KOTAK PERSEGI) */
+      .gallery-img {
+        aspect-ratio: 1 / 1; /* Kotak persegi sempurna */
+        overflow: hidden;
+        border-radius: 12px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        transition: all 0.4s ease;
+        filter: grayscale(80%);
+        background: #111;
+      }
+      .gallery-img img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover; /* Crop rapi ke tengah */
+        object-position: center;
+        transition: all 0.4s ease;
+      }
+      .gallery-img:hover {
+        filter: grayscale(0%);
+        transform: scale(1.05);
+      }
+      .gallery-img:hover img {
+        transform: scale(1.1);
+      }
 
       /* Footer */
       #contact {
         background: var(--bg-dark);
         color: white;
         text-align: center;
+        padding: 1.5rem;
       }
       #contact .profile-small {
         width: 100px;
         height: 100px;
         border-radius: 50%;
         border: 4px solid var(--accent);
+        
       }
 
       /* Animasi Fade In */
@@ -293,6 +312,13 @@
           transform: translateY(0);
         }
       }
+
+      /* Mobile phone*/
+@media (max-width: 450px) {
+#home h1 {
+    font-size: 65px;
+  }
+}
     </style>
   </head>
   <body>
@@ -301,7 +327,7 @@
       <div class="container">
         <div class="text-center">
           <img
-            src="images/profile/myprofile.png"
+            src="images/profile/myprofile.cu.png"
             alt="brand-image"
             class="rounded-circle img-fluid"
             style="width: 90px; height: 90px; object-fit: cover"
@@ -323,19 +349,19 @@
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav ms-auto">
             <li class="nav-item">
-              <a class="nav-link" href="#home">Home</a>
+              <a class="nav-link underline-hover" href="#home">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#about">About Me</a>
+              <a class="nav-link underline-hover" href="#about">About Me</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#work">Projects</a>
+              <a class="nav-link underline-hover" href="#work">My Projects</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#gallery">Gallery</a>
+              <a class="nav-link underline-hover" href="#gallery">Gallery</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#contact">Contact</a>
+              <a class="nav-link underline-hover" href="#contact">Contact</a>
             </li>
           </ul>
         </div>
@@ -364,11 +390,15 @@
     <!-- About -->
     <section id="about">
       <div class="container">
-        <h2 class="section-title text-dark"> About Me</h2>
+        <h2 class="section-title text-dark">About Me</h2>
         <div class="row align-items-center">
           <div class="col-lg-7 fade-in">
             <p class="lead">
-              Electrical Engineering student with experience in robotics, programming, and basic website development. Skilled in technical problem-solving, teamwork, and leadership. Passionate about integrated systems, automation, and innovative engineering projects and fluent in English.
+              Electrical Engineering student with experience in robotics,
+              programming, and basic website development. Skilled in technical
+              problem-solving, teamwork, and leadership. Passionate about
+              integrated systems, automation, and innovative engineering
+              projects and fluent in English.
             </p>
             <ul class="skill-list mt-4 fw-bold">
               <li>English Comunication</li>
@@ -384,7 +414,7 @@
           </div>
           <div class="col-lg-5 text-center fade-in">
             <img
-              src="images/profile/myprofile.png"
+              src="images/project/project-1.jpg"
               alt="Foto Profil"
               class="about-img"
             />
@@ -394,85 +424,126 @@
     </section>
 
     <!-- Work -->
-   <section id="work" class="bg-white">
-  <div class="container">
-    <h2 class="section-title">Projects</h2>
-    <p class="text-center text-muted mb-5 fst-italic">
-      Some selected projects I have worked on.
-    </p>
+    <section id="work" class="bg-white">
+      <div class="container">
+        <h2 class="section-title">Projects</h2>
+        <p class="text-center text-muted mb-5 fst-italic">
+          Some selected projects I have worked on.
+        </p>
 
-    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-5">
-      
-      <!-- Project 1 -->
-     <div class="col fade-in">
-  <div class="work-card h-100" onclick="window.open('projek_1-robotika.html', '_blank')" style="cursor: pointer;">
-    <div class="img-wrapper">
-      <img src="images/project/project-1.jpg" alt="Sumo Robot Terobo's Uncen" loading="lazy">
-    </div>
-    <div class="card-body">
-      <h5>Sumo Robot (Terobo's Uncen)</h5>
-      <p class="text-muted small">C++ • Arduino Uno • Motor-Driver Cytron • Lithium-Ion • DC Motor PG-24 • Radiolink RC4GS</p>
-    </div>
-  </div>
-</div>
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-5">
+          <!-- Project 1 -->
+          <div class="col fade-in">
+            <div
+              class="work-card h-100"
+              onclick="window.open('projek_1-robotika.html', '_blank')"
+              style="cursor: pointer"
+            >
+              <div class="img-wrapper">
+                <img
+                  src="images/gallery/gl-pro-1/pro2.jpg"
+                  alt="Sumo Robot Terobo's Uncen"
+                  loading="lazy"
+                />
+              </div>
+              <div class="card-body">
+                <h5>Sumo Robot (Terobo's Uncen)</h5>
+                <p class="text-muted small">
+                  C++ • Arduino Uno • Motor-Driver Cytron • Lithium-Ion • DC
+                  Motor PG-24 • Radiolink RC4GS
+                </p>
+              </div>
+            </div>
+          </div>
 
-      <!-- Project 2 -->
-      <div class="col fade-in">
-        <div class="work-card h-100" onclick="window.open('projek_2-robotika.html', '_blank')" style="cursor: pointer;">
-          <div class="img-wrapper">
-            <img src="images/project/project-2.jpg" alt="Sumo Robot Uncen Robotic 1" loading="lazy">
+          <!-- Project 2 -->
+          <div class="col fade-in">
+            <div
+              class="work-card h-100"
+              onclick="window.open('projek_2-robotika.html', '_blank')"
+              style="cursor: pointer"
+            >
+              <div class="img-wrapper">
+                <img
+                  src="images/project/project-2.jpg"
+                  alt="Sumo Robot Uncen Robotic 1"
+                  loading="lazy"
+                />
+              </div>
+              <div class="card-body">
+                <h5>Sumo Robot (Uncen Robotic 1)</h5>
+                <p class="text-muted small">
+                  C++ • Arduino Uno • Cytron Driver • Molicel Battery • DC Motor
+                  PG-36 • Radiolink RC4GS
+                </p>
+              </div>
+            </div>
           </div>
-          <div class="card-body">
-            <h5>Sumo Robot (Uncen Robotic 1)</h5>
-            <p class="text-muted small">C++ • Arduino Uno • Cytron Driver • Molicel Battery • DC Motor PG-36 • Radiolink RC4GS</p>
+
+          <!-- Project 3 - Coffie Web -->
+          <div class="col fade-in">
+            <div
+              class="work-card h-100"
+              onclick="window.open('https:vanderiyarangga.github.io/kedai-pamfil-coffie/','_blank')"
+            >
+              <div class="img-wrapper">
+                <img
+                  src="images/project/project-3.jpg"
+                  alt="Kedai Pamfil Coffie Website"
+                  loading="lazy"
+                />
+              </div>
+              <div class="card-body">
+                <h5>Kedai Pamfil Coffie Web</h5>
+                <p class="text-muted small">HTML • CSS • JavaScript</p>
+              </div>
+            </div>
           </div>
+
+          <!-- Project 4 - CheeseCake -->
+          <div class="col fade-in">
+            <div
+              class="work-card h-100"
+              onclick="window.open('https:vanderiyarangga.github.io/vanderi-cheeseCake-Menu/','_blank')"
+            >
+              <div class="img-wrapper">
+                <img
+                  src="images/project/project-4.jpg"
+                  alt="Vanderi CheeseCake Menu"
+                  loading="lazy"
+                />
+              </div>
+              <div class="card-body">
+                <h5>Vanderi CheeseCake Menu</h5>
+                <p class="text-muted small">HTML • CSS • JavaScript</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 5 - Search Box -->
+          <div class="col fade-in">
+            <div
+              class="work-card h-100"
+              onclick="window.open('https:vanderiyarangga.github.io/vanderiyarangga-search-box-project/','_blank')"
+            >
+              <div class="img-wrapper">
+                <img
+                  src="images/project/project-5.jpg"
+                  alt="Search Box Project"
+                  loading="lazy"
+                />
+              </div>
+              <div class="card-body">
+                <h5>Search Box Animation</h5>
+                <p class="text-muted small">HTML • CSS • Pure CSS Animation</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tambah project lain di sini kalau ada -->
         </div>
       </div>
-
-      <!-- Project 3 - Coffie Web -->
-      <div class="col fade-in">
-        <div class="work-card h-100" onclick="window.open('https://vanderiyarangga.github.io/kedai-pamfil-coffie/','_blank')">
-          <div class="img-wrapper">
-            <img src="images/project/project-3.jpg" alt="Kedai Pamfil Coffie Website" loading="lazy">
-          </div>
-          <div class="card-body">
-            <h5>Kedai Pamfil Coffie Web</h5>
-            <p class="text-muted small">HTML • CSS • JavaScript</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Project 4 - CheeseCake -->
-      <div class="col fade-in">
-        <div class="work-card h-100" onclick="window.open('https://vanderiyarangga.github.io/vanderi-cheeseCake-Menu/','_blank')">
-          <div class="img-wrapper">
-            <img src="images/project/project-4.jpg" alt="Vanderi CheeseCake Menu" loading="lazy">
-          </div>
-          <div class="card-body">
-            <h5>Vanderi CheeseCake Menu</h5>
-            <p class="text-muted small">HTML • CSS • JavaScript</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Project 5 - Search Box -->
-      <div class="col fade-in">
-        <div class="work-card h-100" onclick="window.open('https://vanderiyarangga.github.io/vanderiyarangga-search-box-project/','_blank')">
-          <div class="img-wrapper">
-            <img src="images/project/project-5.jpg" alt="Search Box Project" loading="lazy">
-          </div>
-          <div class="card-body">
-            <h5>Search Box Animation</h5>
-            <p class="text-muted small">HTML • CSS • Pure CSS Animation</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Tambah project lain di sini kalau ada -->
-
-    </div>
-  </div>
-</section>
+    </section>
 
     <!-- Gallery -->
     <section id="gallery">
@@ -589,13 +660,13 @@
     <footer id="contact">
       <div class="container">
         <img
-          src="images/profile/myprofile.png"
+          src="images/profile/myprofile.cu.png"
           alt="Profil"
           class="profile-small mb-3"
         />
         <h4>Vanderi Agus Yarangga</h4>
-        <p class="text-muted">Jayapura, Indonesia</p>
-        <p class="text-muted">email@yaranggavanderi.com</p>
+        <p>Jayapura, Indonesia</p>
+        <p>email : @yaranggavanderi.com</p>
         <div class="social-icons my-4">
           <a href="#" class="mx-3"><i class="fab fa-github fa-2x"></i></a>
           <a href="#" class="mx-3"><i class="fab fa-instagram fa-2x"></i></a>
