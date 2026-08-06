@@ -379,28 +379,30 @@
             </div>
           </div>
 
+<!-- 1. THUMBNAIL TRIGGER (Ubah link YouTube di fungsi showVideo) -->
 <div class="col-lg-3 col-md-4 col-6 mb-4">
-<div 
-  class="video-thumbnail-container" 
-  data-bs-toggle="modal" 
-  data-bs-target="#videoModal" 
-  onclick="showVideo('images/gallery/gl-pro-6/VID-20250627-WA0003.mp4')"
->
-<div class="col fade-in">
-  <div class="gallery-img">
-  <img
-    src="images/gallery/gl-pro-6/uns-robot1.jpeg" 
-    alt="Demo Project Video"
-    loading="lazy"
-  />
-
-
-  <div class="video-play-icon">
-    <div class="play-triangle"></div>
+  <div 
+    class="video-thumbnail-container" 
+    data-bs-toggle="modal" 
+    data-bs-target="#videoModal" 
+    onclick="showVideo('https://www.youtube.com/embed/bU7o3MXHnSQ?autoplay=1')"
+  >
+    <div class="col fade-in">
+      <div class="gallery-img">
+        <img
+          src="images/gallery/gl-pro-6/uns-robot1.jpeg" 
+          alt="Demo Project Video"
+          loading="lazy"
+        />
+        <div class="video-play-icon">
+          <div class="play-triangle"></div>
+        </div>
+      </div>
+    </div>
   </div>
-</div></div></div></div>
+</div>
 
-<!-- 3. BOOTSTRAP MODAL CONTAINER -->
+<!-- 2. BOOTSTRAP MODAL CONTAINER (Ganti tag <video> dengan <iframe>) -->
 <div class="modal fade" id="videoModal" tabindex="-1" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered modal-lg">
     <div class="modal-content bg-dark">
@@ -412,74 +414,35 @@
           aria-label="Close"
         ></button>
       </div>
-      <div class="modal-body p-0">
-        <video id="modalVideoPlayer" controls style="width: 100%; display: block;">
-          Browser Anda tidak mendukung pemutaran video MP4.
-        </video>
+      <div class="modal-body p-0 ratio ratio-16x9">
+        <iframe 
+          id="modalVideoPlayer" 
+          src="" 
+          title="YouTube video player" 
+          frameborder="0" 
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+          allowfullscreen>
+        </iframe>
       </div>
     </div>
   </div>
 </div>
 
-<!-- 4. JAVASCRIPT KONTROL PLAYER -->
+<!-- 3. JAVASCRIPT KONTROL PLAYER (Disesuaikan untuk iframe) -->
 <script>
-  function showVideo(videoSrc) {
-    const player = document.getElementById('modalVideoPlayer');
-    player.src = videoSrc;
-    player.load();
-    player.play().catch(error => {
-      console.log("Autoplay ditahan oleh browser:", error);
-    });
+  function showVideo(embedUrl) {
+    const iframe = document.getElementById('modalVideoPlayer');
+    iframe.src = embedUrl;
   }
 
   const videoModal = document.getElementById('videoModal');
   if (videoModal) {
     videoModal.addEventListener('hidden.bs.modal', function () {
-      const player = document.getElementById('modalVideoPlayer');
-      player.pause();
-      player.removeAttribute('src');
-      player.load();
+      const iframe = document.getElementById('modalVideoPlayer');
+      iframe.src = ''; // Menghentikan suara/video saat modal ditutup
     });
   }
 </script>
-        </div>
-
-        <p class="text-center mt-5 text-muted lead">
-          A collection of moments from projects, workshops, and professional
-          development activities I have participated in. Each piece stands as a
-          testament to my dedication to quality and innovation.
-        </p>
-      </div>
-    </section>
-
-    <!-- Footer tetap sama -->
-    <!-- <footer id="contact">
-    <div class="container">
-      <img src="https://placehold.co/100x100?text=Profil" alt="Profil" class="profile-small mb-3">
-      <h4>Nama Lengkap Anda</h4>
-      <p class="text-muted">Jakarta, Indonesia • email@contoh.com</p>
-      <div class="social-icons my-4">
-        <a href="#" class="mx-3"><i class="fab fa-github fa-2x"></i></a>
-        <a href="#" class="mx-3"><i class="fab fa-instagram fa-2x"></i></a>
-        <a href="#" class="mx-3"><i class="fab fa-youtube fa-2x"></i></a>
-      </div>
-      <p class="mt-4">&copy; 2025 Nama Anda. All rights reserved.</p>
-    </div>
-  </footer> -->
-
-    <!-- Lightbox Modal -->
-    <div class="modal fade" id="imgModal" tabindex="-1">
-      <div class="modal-dialog modal-dialog-centered modal-xl">
-        <div class="modal-content bg-transparent border-0">
-          <img
-            id="modalImg"
-            src=""
-            class="img-fluid rounded shadow"
-            alt="Gallery Image"
-          />
-        </div>
-      </div>
-    </div>
 
     <!-- Bootstrap JS + Animasi -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
