@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="id">
   <head>
     <meta charset="UTF-8" />
@@ -66,40 +66,42 @@
         margin: 0 15px;
         position: relative;
       }
-     /* Efek underline pendek dari tengah saat hover */
-.nav-link.underline-hover {
-  position: relative;
-  text-decoration: none; /* Hilangkan underline default jika ada */
-  padding-bottom: 4px; /* Jarak antara teks dan garis */
-}
+      /* Efek underline pendek dari tengah saat hover */
+      .nav-link.underline-hover {
+        position: relative;
+        text-decoration: none; /* Hilangkan underline default jika ada */
+        padding-bottom: 4px; /* Jarak antara teks dan garis */
+      }
 
-.nav-link.underline-hover::after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  right: 50%;
-  height: 2px; /* Ketebalan garis */
-  background-color: #007bff;
-  transition: left 0.3s ease, right 0.3s ease; /* Animasi smooth */
-}
+      .nav-link.underline-hover::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        right: 50%;
+        height: 2px; /* Ketebalan garis */
+        background-color: #007bff;
+        transition:
+          left 0.3s ease,
+          right 0.3s ease; /* Animasi smooth */
+      }
 
-.nav-link.underline-hover:hover::after,
-.nav-link.underline-hover:focus::after {
-  left: 20%;  /* Panjang garis ~60% dari lebar teks */
-  right: 20%;
-}
+      .nav-link.underline-hover:hover::after,
+      .nav-link.underline-hover:focus::after {
+        left: 20%; /* Panjang garis ~60% dari lebar teks */
+        right: 20%;
+      }
 
       /* Hero */
-       #home {
-  min-height: 100vh;
-  background: var(--bg-dark);
-  color: white;
-  position: relative;
-  overflow: hidden;
-}
-     /* Tambahkan lapisan gelap agar teks tetap terbaca */
-/* #home::before {
+      #home {
+        min-height: 100vh;
+        background: var(--bg-dark);
+        color: white;
+        position: relative;
+        overflow: hidden;
+      }
+      /* Tambahkan lapisan gelap agar teks tetap terbaca */
+      /* #home::before {
     content: '';
     position: absolute;
     top: 0; left: 0; right: 0; bottom: 0;
@@ -107,19 +109,19 @@
    z-index: 1;
 } */
 
-/* Pastikan semua teks & elemen di atas lapisan gelap */
-#home > .container,
-#home h1,
-#home p,
-#home .social-icons {
-    position: relative;
-    z-index: 2;
-    text-align: center;
-}
+      /* Pastikan semua teks & elemen di atas lapisan gelap */
+      #home > .container,
+      #home h1,
+      #home p,
+      #home .social-icons {
+        position: relative;
+        z-index: 2;
+        text-align: center;
+      }
 
-#home h1 {
-  padding-top: 3rem;
-}
+      #home h1 {
+        padding-top: 3rem;
+      }
 
       @keyframes noise {
         0% {
@@ -278,7 +280,6 @@
         height: 100px;
         border-radius: 50%;
         border: 4px solid var(--accent);
-        
       }
 
       /* Animasi Fade In */
@@ -314,11 +315,11 @@
       }
 
       /* Mobile phone*/
-@media (max-width: 450px) {
-#home h1 {
-    font-size: 65px;
-  }
-}
+      @media (max-width: 450px) {
+        #home h1 {
+          font-size: 65px;
+        }
+      }
     </style>
   </head>
   <body>
@@ -334,7 +335,7 @@
           />
 
           <a class="navbar-brand text-white fw-bold fst-italic" href="#"
-            >Vanderi</a
+            >Vanderi Yarangga</a
           >
         </div>
 
@@ -372,7 +373,10 @@
     <section id="home">
       <div class="container hero-text">
         <h1 class="display-1">Vanderi Agus Yarangga</h1>
-        <p>Electronic Engineer | Robotic Enthusiast & Junior Web Developer</p>
+        <p>
+          Electrical Engineering | Embedded Systems | Control Systems | IoT |
+          Renewable Energy | Junior Web Developer
+        </p>
         <div class="social-icons mt-5">
           <a href="https://github.com/vanderiyarangga" target="_blank"
             ><i class="fab fa-github"></i
@@ -394,22 +398,42 @@
         <div class="row align-items-center">
           <div class="col-lg-7 fade-in">
             <p class="lead">
-              Electrical Engineering student with experience in robotics,
-              programming, and basic website development. Skilled in technical
-              problem-solving, teamwork, and leadership. Passionate about
-              integrated systems, automation, and innovative engineering
-              projects and fluent in English.
+              Electrical Engineering Graduate with experience in robotics, IoT,
+              renewable energy and basic website development. Skilled in
+              technical problem-solving, teamwork, and leadership. Passionate
+              about integrated systems, automation, Internet of Things (IoT) and
+              innovative engineering projects.
             </p>
             <ul class="skill-list mt-4 fw-bold">
-              <li>English Comunication</li>
-              <li>Microsoft Office (Word, Excel, Power Point)</li>
-              <li>Canva Design</li>
+              <li>Programming Language: C++</li>
               <li>
-                Robotic/Embedded System (Arduino Uno, ESP32, Sencors
-                (Ultrasonic, IR))
+                Website Development: HTML, CSS, JavaScript(Basic), PHP & MySQL
               </li>
-              <li>Basic Programming: C++</li>
-              <li>Basic Website Development: HTML, CSS, Javascript, PHP.</li>
+              <li>
+                Hardware & Embedded Systems:
+                <ul class="=skill-list mt-2 fw-bold">
+                  <li>
+                    Microcontrollers: Arduino, ESP32, Motor-Driver Cytron 10A
+                    MDD10A
+                  </li>
+                  <li>
+                    Sensors: Soil Moisture Capacitive Sensor, DHT22, Ultrasonic
+                    HC-SR04, IR Sensor
+                  </li>
+                  <li>
+                    Actuators: Relay Module 5V 4 Channel, Water Pump Mini DC, DC
+                    Motor(PG-36 & PG-24)
+                  </li>
+                  <li>Displays: LCD 16 X 2</li>
+                  <li>Communication Protocols: I2C Module, UART, HTTP</li>
+                </ul>
+              </li>
+
+              <li>
+                Tools & Software: Microsoft Office(Word, Excel, PowerPoint),
+                Canva Design, Visual Studio Code, Arduino IDE, GitHub
+              </li>
+              <li>Language: Bahasa Indonesia(Native), English(A2-Basic)</li>
             </ul>
           </div>
           <div class="col-lg-5 text-center fade-in">
@@ -447,7 +471,10 @@
                 />
               </div>
               <div class="card-body">
-                <h5>Sumo Robot (Terobo's Uncen)</h5>
+                <h5>
+                  Sumo Robot (Terobo's Uncen) FORTEI REGION IV UHO Kendari
+                  (2024)
+                </h5>
                 <p class="text-muted small">
                   C++ • Arduino Uno • Motor-Driver Cytron • Lithium-Ion • DC
                   Motor PG-24 • Radiolink RC4GS
@@ -471,10 +498,13 @@
                 />
               </div>
               <div class="card-body">
-                <h5>Sumo Robot (Uncen Robotic 1)</h5>
+                <h5>
+                  Sumo Robot (Uncen Robotic 1) EOR UNJ Competition Jakarta
+                  (2024)
+                </h5>
                 <p class="text-muted small">
-                  C++ • Arduino Uno • Cytron Driver • Molicel Battery • DC Motor
-                  PG-36 • Radiolink RC4GS
+                  C++ • Arduino Uno • Motor-Driver Cytron • Molicel Battery • DC
+                  Motor PG-36 • Radiolink RC4GS
                 </p>
               </div>
             </div>
@@ -484,7 +514,12 @@
           <div class="col fade-in">
             <div
               class="work-card h-100"
-              onclick="window.open('https:vanderiyarangga.github.io/kedai-pamfil-coffie/','_blank')"
+              onclick="
+                window.open(
+                  'https:vanderiyarangga.github.io/kedai-pamfil-coffie/',
+                  '_blank',
+                )
+              "
             >
               <div class="img-wrapper">
                 <img
@@ -504,7 +539,12 @@
           <div class="col fade-in">
             <div
               class="work-card h-100"
-              onclick="window.open('https:vanderiyarangga.github.io/vanderi-cheeseCake-Menu/','_blank')"
+              onclick="
+                window.open(
+                  'https:vanderiyarangga.github.io/vanderi-cheeseCake-Menu/',
+                  '_blank',
+                )
+              "
             >
               <div class="img-wrapper">
                 <img
@@ -524,7 +564,12 @@
           <div class="col fade-in">
             <div
               class="work-card h-100"
-              onclick="window.open('https:vanderiyarangga.github.io/vanderiyarangga-search-box-project/','_blank')"
+              onclick="
+                window.open(
+                  'https:vanderiyarangga.github.io/vanderiyarangga-search-box-project/',
+                  '_blank',
+                )
+              "
             >
               <div class="img-wrapper">
                 <img
@@ -540,6 +585,89 @@
             </div>
           </div>
 
+          <!-- Project 6 - Robot Sumo UNS SOLO -->
+          <div class="col fade-in">
+            <div
+              class="work-card h-100"
+              onclick="window.open('projek_6-robotika.html', '_blank')"
+              style="cursor: pointer"
+            >
+              <div class="img-wrapper">
+                <img
+                  src="images/gallery/gl-pro-6/uns-robot2.jpeg"
+                  alt="Sumo Robot Uncen Robotic 1"
+                  loading="lazy"
+                />
+              </div>
+              <div class="card-body">
+                <h5>
+                  Sumo Robot (Terobo's 2) International Robosport Tournament UNS
+                  Solo (2025)
+                </h5>
+                <p class="text-muted small">
+                  C++ • Arduino Uno • Motor-Driver Cytron • Molicel Battery • DC
+                  Motor PG-36 • Radiolink RC4GS
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 7 PLTS -->
+          <div class="col fade-in">
+            <div
+              class="work-card h-100"
+              onclick="window.open('projek_7-PLTS.html', '_blank')"
+              style="cursor: pointer"
+            >
+              <div class="img-wrapper">
+                <img
+                  src="images/gallery/gl-pro-7/plts6c.jpeg"
+                  alt="PLTS Kampung Yoboi1"
+                  loading="lazy"
+                />
+              </div>
+              <div class="card-body">
+                <h5>PLTS Kampung Yoboi Kabupaten Jayapura (2025)</h5>
+                <p class="text-muted small">
+                  Solar PV Panel • Solar Charge Controller • Inverter & Battery
+                  • Wiring & Protection
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 8 Smart Farming -->
+          <div class="col fade-in">
+            <div
+              class="work-card h-100"
+              onclick="window.open('projek_8-SmartFarming.html', '_blank')"
+              style="cursor: pointer"
+            >
+              <div class="img-wrapper">
+                <img
+                  src="images/gallery/gl-pro-8/Cabai-IoT-webs.png"
+                  alt="Smart Farming"
+                  loading="lazy"
+                />
+              </div>
+              <div class="card-body">
+                <h5>
+                  Sistem Fertigasi Otomatis Berbasis IoT Menggunakan Algoritma
+                  <i>Mamdani Fuzzy Logic (2026)</i>
+                </h5>
+                <p class="text-muted small">
+                  1. Hardware: ESP32 • Soil Moisture Capacitive Sensor • DHT22 •
+                    Ultrasonic HC-SR04 Sensor • Relay Module 5v 4 Channel •
+                    Waterpump Mini DC • LCD 16 x 2 & I2C Module
+                </p>
+                <p class="text-muted small">
+                  2. Software & Website: Arduino IDE • C++ • VS Code • HTML & CSS
+                    (Bootsrap) • Javascript • PHP & MySQL • HTTP
+                
+                </p>
+              </div>
+            </div>
+          </div>
           <!-- Tambah project lain di sini kalau ada -->
         </div>
       </div>
@@ -647,11 +775,50 @@
               />
             </div>
           </div>
+
+          <div class="col fade-in">
+            <div class="gallery-img">
+              <img
+                src="images/gallery/robot-esp32-cam.jpg"
+                alt="Gallery 9"
+                loading="lazy"
+                data-bs-toggle="modal"
+                data-bs-target="#imgModal"
+                onclick="showImg(this.src)"
+              />
+            </div>
+          </div>
+
+          <div class="col fade-in">
+            <div class="gallery-img">
+              <img
+                src="images/gallery/robot-jinak2-merpati.jpg"
+                alt="Gallery 10"
+                loading="lazy"
+                data-bs-toggle="modal"
+                data-bs-target="#imgModal"
+                onclick="showImg(this.src)"
+              />
+            </div>
+          </div>
+
+          <div class="col fade-in">
+            <div class="gallery-img">
+              <img
+                src="images/gallery/robot-jinak2-merpati-2.jpg"
+                alt="Gallery 11"
+                loading="lazy"
+                data-bs-toggle="modal"
+                data-bs-target="#imgModal"
+                onclick="showImg(this.src)"
+              />
+            </div>
+          </div>
         </div>
         <p class="text-center mt-5 text-muted lead">
-          Koleksi momen dari proyek, workshop, dan kegiatan pengembangan yang
-          pernah saya ikuti. Setiap karya merupakan bukti dedikasi saya terhadap
-          kualitas dan inovasi.
+          A collection of moments from projects, workshops, and professional
+          development activities I have participated in. Each piece stands as a
+          testament to my dedication to quality and innovation.
         </p>
       </div>
     </section>
@@ -710,7 +877,7 @@
             }
           });
         },
-        { threshold: 0.1 }
+        { threshold: 0.1 },
       );
       fadeElems.forEach((el) => observer.observe(el));
 
