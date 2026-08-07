@@ -239,70 +239,69 @@
         transform: translateY(0);
       }
 
-/* Pembungkus Thumbnail Video */
-  .video-thumbnail-container {
-    position: relative !important;
-    display: inline-block;
-    width: 100%;
-    cursor: pointer;
-    overflow: hidden;
-    border-radius: 12px;
-  }
+      /* Pembungkus Thumbnail Video */
+      .video-thumbnail-container {
+        position: relative !important;
+        display: inline-block;
+        width: 100%;
+        cursor: pointer;
+        overflow: hidden;
+        border-radius: 12px;
+      }
 
-  .video-thumbnail-container img {
-    width: 100%;
-    height: auto;
-    display: block;
-    transition: transform 0.3s ease;
-  }
+      .video-thumbnail-container img {
+        width: 100%;
+        height: auto;
+        display: block;
+        transition: transform 0.3s ease;
+      }
 
-  /* Styling Tombol Play Merah di Tengah Gambar */
-  .video-play-icon {
-    position: absolute !important;
-    top: 50% !important;
-    left: 50% !important;
-    transform: translate(-50%, -50%) !important;
-    width: 60px;
-    height: 60px;
-    background-color: #ff0000;
-    border-radius: 50%;
-    display: flex !important;
-    align-items: center;
-    justify-content: center;
-    z-index: 10 !important;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
-    transition: all 0.3s ease;
-  }
+      /* Styling Tombol Play Merah di Tengah Gambar */
+      .video-play-icon {
+        position: absolute !important;
+        top: 50% !important;
+        left: 50% !important;
+        transform: translate(-50%, -50%) !important;
+        width: 60px;
+        height: 60px;
+        background-color: #ff0000;
+        border-radius: 50%;
+        display: flex !important;
+        align-items: center;
+        justify-content: center;
+        z-index: 10 !important;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+        transition: all 0.3s ease;
+      }
 
-  /* Segitiga Putih Tombol Play */
-  .play-triangle {
-    width: 0;
-    height: 0;
-    border-top: 10px solid transparent;
-    border-bottom: 10px solid transparent;
-    border-left: 16px solid #ffffff;
-    margin-left: 4px;
-  }
+      /* Segitiga Putih Tombol Play */
+      .play-triangle {
+        width: 0;
+        height: 0;
+        border-top: 10px solid transparent;
+        border-bottom: 10px solid transparent;
+        border-left: 16px solid #ffffff;
+        margin-left: 4px;
+      }
 
-  /* Efek Hover saat Kursor Diatas Gambar */
-  .video-thumbnail-container:hover img {
-    transform: scale(1.05);
-  }
+      /* Efek Hover saat Kursor Diatas Gambar */
+      .video-thumbnail-container:hover img {
+        transform: scale(1.05);
+      }
 
-  .video-thumbnail-container:hover .video-play-icon {
-    transform: translate(-50%, -50%) scale(1.15) !important;
-    background-color: #cc0000;
-  }
-
-  
-
+      .video-thumbnail-container:hover .video-play-icon {
+        transform: translate(-50%, -50%) scale(1.15) !important;
+        background-color: #cc0000;
+      }
     </style>
   </head>
   <body>
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg fixed-top">
       <div class="container">
-        <a class="navbar-brand text-white fw-bold" href="#"><i>Vanderi Yarangga</i></a>
+        <a class="navbar-brand text-white fw-bold" href="#"
+          ><i>Vanderi Yarangga</i></a
+        >
         <button
           class="navbar-toggler"
           type="button"
@@ -379,70 +378,104 @@
             </div>
           </div>
 
-<!-- 1. THUMBNAIL TRIGGER (Ubah link YouTube di fungsi showVideo) -->
-<div class="col-lg-3 col-md-4 col-6 mb-4">
-  <div 
-    class="video-thumbnail-container" 
-    data-bs-toggle="modal" 
-    data-bs-target="#videoModal" 
-    onclick="showVideo('https://www.youtube.com/embed/bU7o3MXHnSQ?autoplay=1')"
-  >
-    <div class="col fade-in">
-      <div class="gallery-img">
-        <img
-          src="images/gallery/gl-pro-6/uns-robot1.jpeg" 
-          alt="Demo Project Video"
-          loading="lazy"
-        />
-        <div class="video-play-icon">
-          <div class="play-triangle"></div>
+          <!-- 1. THUMBNAIL TRIGGER (Ubah link YouTube di fungsi showVideo) -->
+          <div class="col-lg-3 col-md-4 col-6 mb-4">
+            <div
+              class="video-thumbnail-container"
+              data-bs-toggle="modal"
+              data-bs-target="#videoModal"
+              onclick="
+                showVideo(
+                  'https://www.youtube.com/embed/bU7o3MXHnSQ?autoplay=1',
+                )
+              "
+            >
+              <div class="col fade-in">
+                <div class="gallery-img">
+                  <img
+                    src="images/gallery/gl-pro-6/uns-robot1.jpeg"
+                    alt="Demo Project Video"
+                    loading="lazy"
+                  />
+                  <div class="video-play-icon">
+                    <div class="play-triangle"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 2. BOOTSTRAP MODAL CONTAINER (Ganti tag <video> dengan <iframe>) -->
+          <div
+            class="modal fade"
+            id="videoModal"
+            tabindex="-1"
+            aria-hidden="true"
+          >
+            <div class="modal-dialog modal-dialog-centered modal-lg">
+              <div class="modal-content bg-dark">
+                <div class="modal-header border-0">
+                  <button
+                    type="button"
+                    class="btn-close btn-close-white"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"
+                  ></button>
+                </div>
+                <div class="modal-body p-0 ratio ratio-16x9">
+                  <iframe
+                    id="modalVideoPlayer"
+                    src=""
+                    title="YouTube video player"
+                    frameborder="0"
+                    allow="
+                      accelerometer;
+                      autoplay;
+                      clipboard-write;
+                      encrypted-media;
+                      gyroscope;
+                      picture-in-picture;
+                    "
+                    allowfullscreen
+                  >
+                  </iframe>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 3. JAVASCRIPT KONTROL PLAYER (Disesuaikan untuk iframe) -->
+          <script>
+            function showVideo(embedUrl) {
+              const iframe = document.getElementById("modalVideoPlayer");
+              iframe.src = embedUrl;
+            }
+
+            const videoModal = document.getElementById("videoModal");
+            if (videoModal) {
+              videoModal.addEventListener("hidden.bs.modal", function () {
+                const iframe = document.getElementById("modalVideoPlayer");
+                iframe.src = ""; // Menghentikan suara/video saat modal ditutup
+              });
+            }
+          </script>
+        </div>
+      </div>
+    </section>
+
+    <!-- Lightbox Modal -->
+    <div class="modal fade" id="imgModal" tabindex="-1">
+      <div class="modal-dialog modal-dialog-centered modal-xl">
+        <div class="modal-content bg-transparent border-0">
+          <img
+            id="modalImg"
+            src=""
+            class="img-fluid rounded shadow"
+            alt="Gallery Image"
+          />
         </div>
       </div>
     </div>
-  </div>
-</div>
-
-<!-- 2. BOOTSTRAP MODAL CONTAINER (Ganti tag <video> dengan <iframe>) -->
-<div class="modal fade" id="videoModal" tabindex="-1" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered modal-lg">
-    <div class="modal-content bg-dark">
-      <div class="modal-header border-0">
-        <button 
-          type="button" 
-          class="btn-close btn-close-white" 
-          data-bs-dismiss="modal" 
-          aria-label="Close"
-        ></button>
-      </div>
-      <div class="modal-body p-0 ratio ratio-16x9">
-        <iframe 
-          id="modalVideoPlayer" 
-          src="" 
-          title="YouTube video player" 
-          frameborder="0" 
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-          allowfullscreen>
-        </iframe>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- 3. JAVASCRIPT KONTROL PLAYER (Disesuaikan untuk iframe) -->
-<script>
-  function showVideo(embedUrl) {
-    const iframe = document.getElementById('modalVideoPlayer');
-    iframe.src = embedUrl;
-  }
-
-  const videoModal = document.getElementById('videoModal');
-  if (videoModal) {
-    videoModal.addEventListener('hidden.bs.modal', function () {
-      const iframe = document.getElementById('modalVideoPlayer');
-      iframe.src = ''; // Menghentikan suara/video saat modal ditutup
-    });
-  }
-</script>
 
     <!-- Bootstrap JS + Animasi -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
