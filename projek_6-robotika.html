@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="Portfolio Full-Stack Developer - Nama Anda"
+      content="Portfolio Full-Stack Developer - Vanderi Agus Yarangga"
     />
     <title>Vanderi Yarangga | Personal Web | gallery-02</title>
 
@@ -30,12 +30,12 @@
         --bg-dark: #0f0f1a;
         --text-light: #ffffff;
         --text-muted: #a0a0c0;
-        --accent: #007bff;
+
         --gray-light: #f8f9fa;
       }
       body {
         font-family: "Inter", sans-serif;
-        background: #fff;
+        background: #ffffff;
         color: #333;
         scroll-behavior: smooth;
         overflow-x: hidden;
@@ -44,8 +44,7 @@
       h2,
       h3,
       h4,
-      h5,
-      h6 {
+      h5 {
         font-weight: 800;
       }
 
@@ -67,43 +66,63 @@
         margin: 0 15px;
         position: relative;
       }
-      .navbar .nav-link::after {
+      /* Efek underline pendek dari tengah saat hover */
+      .nav-link.underline-hover {
+        position: relative;
+        text-decoration: none; /* Hilangkan underline default jika ada */
+        padding-bottom: 4px; /* Jarak antara teks dan garis */
+      }
+
+      .nav-link.underline-hover::after {
         content: "";
         position: absolute;
-        width: 0;
-        height: 2px;
-        bottom: -6px;
+        bottom: 0;
         left: 50%;
-        background: var(--accent);
-        transition: all 0.3s;
+        right: 50%;
+        height: 2px; /* Ketebalan garis */
+        background-color: #007bff;
+        transition:
+          left 0.3s ease,
+          right 0.3s ease; /* Animasi smooth */
       }
-      .navbar .nav-link:hover::after {
-        width: 100%;
-        left: 0;
+
+      .nav-link.underline-hover:hover::after,
+      .nav-link.underline-hover:focus::after {
+        left: 20%; /* Panjang garis ~60% dari lebar teks */
+        right: 20%;
       }
 
       /* Hero */
       #home {
-        height: 100vh;
-        min-height: 600px;
-        background: linear-gradient(135deg, #0f0f1a 0%, #1a1a2e 100%);
-        position: relative;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
+        min-height: 100vh;
+        background: var(--bg-dark);
         color: white;
+        position: relative;
         overflow: hidden;
       }
-      #home::before {
-        content: "";
-        position: absolute;
-        inset: 0;
-        background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"><rect width="100" height="100" fill="%230f0f1a"/><rect x="0" y="0" width="50" height="50" fill="%23151525"/><rect x="50" y="50" width="50" height="50" fill="%23151525"/></svg>')
-          repeat;
-        opacity: 0.4;
-        animation: noise 10s steps(10) infinite;
+      /* Tambahkan lapisan gelap agar teks tetap terbaca */
+      /* #home::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0, 0, 0, 0.3);
+   z-index: 1;
+} */
+
+      /* Pastikan semua teks & elemen di atas lapisan gelap */
+      #home > .container,
+      #home h1,
+      #home p,
+      #home .social-icons {
+        position: relative;
+        z-index: 2;
+        text-align: center;
       }
+
+      #home h1 {
+        padding-top: 3rem;
+      }
+
       @keyframes noise {
         0% {
           transform: translate(0, 0);
@@ -112,27 +131,34 @@
           transform: translate(10px, 10px);
         }
       }
+
       .hero-text h1 {
         font-size: 5rem;
         font-weight: 900;
         text-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+        animation: fadeInDown 1s ease-out;
       }
       .hero-text p {
         font-size: 1.6rem;
         font-weight: 300;
         opacity: 0.9;
+        animation: fadeInUp 1s ease-out 0.4s forwards;
+        opacity: 0;
       }
       .social-icons a {
         color: white;
         font-size: 1.8rem;
         margin: 0 20px;
         transition: all 0.3s;
+        animation: fadeInUp 1s ease-out 0.8s forwards;
+        opacity: 0;
       }
       .social-icons a:hover {
-        color: var(--accent);
+        color: #007bff;
         transform: translateY(-5px);
       }
 
+      /* Section umum */
       section {
         padding: 100px 0;
       }
@@ -154,8 +180,12 @@
       }
 
       /* About */
-      #about {
-        background: var(--gray-light);
+      #home,
+      #about,
+      #work,
+      #gallery {
+        background: var(--bg-dark);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Garis tipis halus di bagian bawah tiap section */
       }
       .about-img {
         border-radius: 50%;
@@ -164,8 +194,13 @@
         object-fit: cover;
         box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
       }
+      .skill-list li {
+        font-size: 1.1rem;
+        margin: 10px 0;
+        color: #555;
+      }
 
-      /* Work Cards */
+      /* PROJECTS — Gambar project ukuran sama persis (rasio 4:3, bisa diganti) */
       .work-card {
         background: white;
         border-radius: 12px;
@@ -173,19 +208,43 @@
         box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
         transition: all 0.4s ease;
         cursor: pointer;
+        display: flex;
+        flex-direction: column;
       }
+
+      .work-card .img-wrapper {
+        aspect-ratio: 4 / 3; /* Semua gambar project jadi 4:3 (bisa diganti 16/9 atau 1/1) */
+        overflow: hidden;
+        background: #111;
+        position: relative;
+      }
+
+      .work-card .img-wrapper img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover; /* Crop rapi ke tengah */
+        object-position: center;
+        transition: all 0.4s ease;
+        filter: grayscale(30%);
+      }
+
+      .work-card:hover .img-wrapper img {
+        filter: grayscale(0%);
+        transform: scale(1.08);
+      }
+
       .work-card:hover {
         transform: translateY(-15px) scale(1.02);
-        box-shadow: 0 25px 50px rgba(0, 123, 255, 0.2);
+        box-shadow: 0 25px 50px rgba(0, 123, 255, 0.25);
         border: 1px solid var(--accent);
       }
-      .work-card img {
-        filter: grayscale(30%);
-        transition: all 0.4s;
-      }
-      .work-card:hover img {
-        filter: grayscale(0%);
-        transform: scale(1.05);
+
+      .work-card .card-body {
+        flex-grow: 1;
+        padding: 1.5rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
       }
 
       /* GALLERY — SEMUA FOTO UKURAN SAMA (KOTAK PERSEGI) */
@@ -218,17 +277,16 @@
         background: var(--bg-dark);
         color: white;
         text-align: center;
-        padding: 100px 0;
+        padding: 1.5rem;
       }
       #contact .profile-small {
         width: 100px;
         height: 100px;
         border-radius: 50%;
         border: 4px solid var(--accent);
-        object-fit: cover;
       }
 
-      /* Fade-in Animation */
+      /* Animasi Fade In */
       .fade-in {
         opacity: 0;
         transform: translateY(30px);
@@ -237,6 +295,112 @@
       .fade-in.visible {
         opacity: 1;
         transform: translateY(0);
+      }
+
+      @keyframes fadeInDown {
+        from {
+          opacity: 0;
+          transform: translateY(-50px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(50px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* Mobile phone*/
+      @media (max-width: 450px) {
+        #home h1 {
+          font-size: 65px;
+        }
+      }
+
+      /* Efek kedip kursor */
+      .cursor {
+        animation: blink 0.5s infinite;
+      }
+
+      @keyframes blink {
+        0%,
+        100% {
+          opacity: 1;
+        }
+        50% {
+          opacity: 0;
+        }
+      }
+
+      .more-about-btn {
+        text-decoration: none;
+        font-weight: 600;
+        color: #0d6efd; /* Sesuaikan warna dengan tema Anda */
+        display: inline-block;
+      }
+
+      /* Animasi titik berjalan */
+      .dots::after {
+        content: "";
+        animation: runningDots 3s steps(4, end) infinite;
+      }
+
+      @keyframes runningDots {
+        0% {
+          content: "";
+        }
+        25% {
+          content: ".";
+        }
+        50% {
+          content: "..";
+        }
+        75% {
+          content: "...";
+        }
+        100% {
+          content: "";
+        }
+      }
+
+      /* Style untuk Progress Bar Skill */
+      .skill-item {
+        margin-bottom: 20px;
+      }
+
+      .skill-info {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 6px;
+        font-weight: 600;
+        font-size: 0.85rem;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        color: #a0a0a0; /* Ubah warna teks sesuai tema jika latar terang/gelap */
+      }
+
+      .skill-bar {
+        height: 6px;
+        background-color: #2a2d32; /* Latar belakang bar kosong */
+        border-radius: 10px;
+        overflow: hidden;
+        position: relative;
+      }
+
+      .skill-progress {
+        height: 100%;
+        border-radius: 10px;
+        /* Warna gradient biru ke hijau limau seperti pada gambar */
+        background: linear-gradient(90deg, #1b75ff 0%, #38ef7d 100%);
+        transition: width 1s ease-in-out;
       }
 
       /* Pembungkus Thumbnail Video */
@@ -319,6 +483,9 @@
             <li class="nav-item">
               <a class="nav-link" href="#work">My Project</a>
             </li>
+             <li class="nav-item">
+              <a class="nav-link" href="#certificates">Certificates</a>
+            </li>
             <li class="nav-item">
               <a class="nav-link" href="#gallery">Gallery</a>
             </li>
@@ -335,9 +502,9 @@
 
     <!-- GALLERY — SUDAH 100% RAPI & SAMA BESAR -->
     <section id="gallery">
-      <div class="container">
-        <h2 class="section-title text-dark">Gallery</h2>
-        <p class="fw-bold">Sumo Robot (Terobo's Uncen 2)</p>
+      <div class="container text-light">
+        <h2 class="section-title">Gallery</h2>
+        <p class="fw-bold">International Robosport Tournament Sumo Robot Category UNS Solo (2025)</p>
         <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 g-4">
           <div class="col fade-in">
             <div class="gallery-img">
@@ -460,7 +627,7 @@
             }
           </script>
         </div>
-         <p class="text-center mt-5 text-muted lead">
+        <p class="text-center mt-5 text-light lead">
           A collection of moments from projects, workshops, and professional
           development activities I have participated in. Each piece stands as a
           testament to my dedication to quality and innovation.
@@ -481,7 +648,6 @@
         </div>
       </div>
     </div>
-    
 
     <!-- Bootstrap JS + Animasi -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
