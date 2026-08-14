@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="Portfolio Full-Stack Developer - Nama Anda"
+      content="Portfolio Full-Stack Developer - Vanderi Agus Yarangga"
     />
-    <title>Vanderi Yarangga | Personal Web | gallery-02</title>
+    <title>Vanderi Yarangga | Personal Web | gallery-01</title>
 
     <!-- Bootstrap 5.3 -->
     <link
@@ -25,7 +25,7 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
     />
 
-   <style>
+    <style>
       :root {
         --bg-dark: #0f0f1a;
         --text-light: #ffffff;
@@ -180,12 +180,12 @@
       }
 
       /* About */
-      #home, 
-      #about, 
-      #work, 
+      #home,
+      #about,
+      #work,
       #gallery {
         background: var(--bg-dark);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Garis tipis halus di bagian bawah tiap section */
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Garis tipis halus di bagian bawah tiap section */
       }
       .about-img {
         border-radius: 50%;
@@ -326,66 +326,87 @@
       }
 
       /* Efek kedip kursor */
-.cursor {
-  animation: blink 0.5s infinite;
-}
+      .cursor {
+        animation: blink 0.5s infinite;
+      }
 
-@keyframes blink {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0; }
-}
+      @keyframes blink {
+        0%,
+        100% {
+          opacity: 1;
+        }
+        50% {
+          opacity: 0;
+        }
+      }
 
-.more-about-btn {
-  text-decoration: none;
-  font-weight: 600;
-  color: #0d6efd; /* Sesuaikan warna dengan tema Anda */
-  display: inline-block;
-}
+      .more-about-btn {
+        text-decoration: none;
+        font-weight: 600;
+        color: #0d6efd; /* Sesuaikan warna dengan tema Anda */
+        display: inline-block;
+      }
 
-/* Animasi titik berjalan */
-.dots::after {
-  content: '';
-  animation: runningDots 3s steps(4, end) infinite;
-}
+      /* Animasi titik berjalan */
+      .dots::after {
+        content: "";
+        animation: runningDots 3s steps(4, end) infinite;
+      }
 
-@keyframes runningDots {
-  0%   { content: ''; }
-  25%  { content: '.'; }
-  50%  { content: '..'; }
-  75%  { content: '...'; }
-  100% { content: ''; }
-}
+      @keyframes runningDots {
+        0% {
+          content: "";
+        }
+        25% {
+          content: ".";
+        }
+        50% {
+          content: "..";
+        }
+        75% {
+          content: "...";
+        }
+        100% {
+          content: "";
+        }
+      }
 
-/* Style untuk Progress Bar Skill */
-.skill-item {
-  margin-bottom: 20px;
-}
+      /* Style untuk Progress Bar Skill */
+      .skill-item {
+        margin-bottom: 20px;
+      }
 
-.skill-info {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 6px;
-  font-weight: 600;
-  font-size: 0.85rem;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  color: #a0a0a0; /* Ubah warna teks sesuai tema jika latar terang/gelap */
-}
+      .skill-info {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 6px;
+        font-weight: 600;
+        font-size: 0.85rem;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        color: #a0a0a0; /* Ubah warna teks sesuai tema jika latar terang/gelap */
+      }
 
-.skill-bar {
-  height: 6px;
-  background-color: #2a2d32; /* Latar belakang bar kosong */
-  border-radius: 10px;
-  overflow: hidden;
-  position: relative;
-}
+      .skill-bar {
+        height: 6px;
+        background-color: #2a2d32; /* Latar belakang bar kosong */
+        border-radius: 10px;
+        overflow: hidden;
+        position: relative;
+      }
 
-.skill-progress {
-  height: 100%;
-  border-radius: 10px;
-  /* Warna gradient biru ke hijau limau seperti pada gambar */
-  background: linear-gradient(90deg, #1b75ff 0%, #38ef7d 100%);
-  transition: width 1s ease-in-out;
+      .skill-progress {
+        height: 100%;
+        border-radius: 10px;
+        /* Warna gradient biru ke hijau limau seperti pada gambar */
+        background: linear-gradient(90deg, #1b75ff 0%, #38ef7d 100%);
+        transition: width 1s ease-in-out;
+      }
+
+      .fa-instagram {
+  font-size: 16px;
+  color: #e1306c; /* Warna khas Instagram */
+  transition: transform 0.2s ease, color 0.2s ease;
 }
     </style>
   </head>
@@ -393,7 +414,9 @@
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg fixed-top">
       <div class="container">
-        <a class="navbar-brand text-white fw-bold" href="#"><i>Vanderi Yarangga</i></a>
+        <a class="navbar-brand text-white fw-bold" href="#"
+          ><i>Vanderi Yarangga</i></a
+        >
         <button
           class="navbar-toggler"
           type="button"
@@ -404,21 +427,21 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav ms-auto">
-            <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="#index.html">Home</a></li>
             <li class="nav-item">
               <a class="nav-link" href="index.html#about">About</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="index.html#work">My Project</a>
             </li>
-             <li class="nav-item">
+            <li class="nav-item">
               <a class="nav-link" href="index.html#organization">Organizations</a>
             </li>
-             <li class="nav-item">
+            <li class="nav-item">
               <a class="nav-link" href="index.html#certificates">Certificates</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="index.html#gallery">Gallery</a>
+              <a class="nav-link" href="index.html#gallery">Gallery></a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="index.html#contact">Contact</a>
@@ -435,13 +458,38 @@
     <section id="gallery">
       <div class="container text-light">
         <h2 class="section-title">Gallery</h2>
-        <p class="fw-bold">Sistem Fertigasi Otomatis Berbasis IoT Pada Tanaman Cabai Menggunakan Algoritma (2026) <i>Mamdani Fuzzy Logic</i></p>
+        <p class="fw-bold">
+          KKN Tematik Universitas Cenderawasih | Kampung Bakribo, Distrik Oridek, Biak, Papua Indonesia (2025)
+        </p>
         <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 g-4">
+          <div
+            class="work-card h-100 gallery-img"
+            onclick="
+              window.open(
+                'https://www.instagram.com/kkn.kamp.bakribo?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==&igsi=ZDNlZDc0MzIxNw==',
+                '_blank',
+              )
+            "
+            style="cursor: pointer"
+          >
+            <div class="img-wrapper">
+              <img
+                src="images/gallery/KKN/kkn-profile.jpeg"
+                alt="KKN Kampung Bakribo"
+                loading="lazy"
+              />
+            </div>
+            <p>
+              KKN-T Universitas Cenderawasih | Kampung Bakribo, Distrik Oridek, Kabupaten Biak Numfor 
+              <H6><i class="fa-brands fa-instagram"></i> :<a href="#"> @kkn.kamp.bakribo</a></H6>
+            </p>
+          </div>
+
           <div class="col fade-in">
             <div class="gallery-img">
               <img
-                src="images/gallery/gl-pro-8/Cabai-IoT-webs.png"
-                alt="Project 1"
+                src="images/gallery/KKN/kkn-tugu.jpeg"
+                alt="Project 1.1"
                 loading="lazy"
                 data-bs-toggle="modal"
                 data-bs-target="#imgModal"
@@ -453,8 +501,8 @@
           <div class="col fade-in">
             <div class="gallery-img">
               <img
-                src="images/gallery/gl-pro-8/smartfarm1.jpeg"
-                alt="Project 2"
+                src="images/gallery/KKN/kkn1.jpeg"
+                alt="Project 1.2"
                 loading="lazy"
                 data-bs-toggle="modal"
                 data-bs-target="#imgModal"
@@ -466,8 +514,8 @@
           <div class="col fade-in">
             <div class="gallery-img">
               <img
-                src="images/gallery/gl-pro-8/smartfarm2.jpeg"
-                alt="Pelatihan Robotic 1"
+                src="images/gallery/KKN/kkn2.jpeg"
+                alt="Project 1.3"
                 loading="lazy"
                 data-bs-toggle="modal"
                 data-bs-target="#imgModal"
@@ -479,8 +527,8 @@
           <div class="col fade-in">
             <div class="gallery-img">
               <img
-                src="images/gallery/gl-pro-8/smartfarm3.jpeg"
-                alt="Pelatihan Robotic 2"
+                src="images/gallery/KKN/kkn3.jpeg"
+                alt="Project 1.4"
                 loading="lazy"
                 data-bs-toggle="modal"
                 data-bs-target="#imgModal"
@@ -492,8 +540,47 @@
           <div class="col fade-in">
             <div class="gallery-img">
               <img
-                src="images/gallery/gl-pro-8/smartfarm4.jpeg"
-                alt="Demo Project"
+                src="images/gallery/KKN/kkn4.jpeg"
+                alt="Project 1.5"
+                loading="lazy"
+                data-bs-toggle="modal"
+                data-bs-target="#imgModal"
+                onclick="showImg(this.src)"
+              />
+            </div>
+          </div>
+
+          <div class="col fade-in">
+            <div class="gallery-img">
+              <img
+                src="images/gallery/KKN/kkn5.jpeg"
+                alt="Project 1.6"
+                loading="lazy"
+                data-bs-toggle="modal"
+                data-bs-target="#imgModal"
+                onclick="showImg(this.src)"
+              />
+            </div>
+          </div>
+
+          <div class="col fade-in">
+            <div class="gallery-img">
+              <img
+                src="images/gallery/KKN/kkn6.jpeg"
+                alt="Project 1.7"
+                loading="lazy"
+                data-bs-toggle="modal"
+                data-bs-target="#imgModal"
+                onclick="showImg(this.src)"
+              />
+            </div>
+          </div>
+
+          <div class="col fade-in">
+            <div class="gallery-img">
+              <img
+                src="images/gallery/KKN/kkn7.jpeg"
+                alt="Project 1.8"
                 loading="lazy"
                 data-bs-toggle="modal"
                 data-bs-target="#imgModal"
